@@ -2,13 +2,18 @@
 import { Jugador } from './Jugador.js';
 
 export class JugadorAccion extends Jugador {
-    constructor(gamertag, edad, partidasGanadas, ratio) {
+  #ratio; // privado el ratio como pide el diagrama
 
-        super(gamertag, edad, partidasGanadas);
-        this.ratio = ratio;
-    }
+  constructor(gamertag, edad, partidasGanadas, ratio) {
+    super(gamertag, edad, partidasGanadas);
+    this.#ratio = ratio;
+  }
 
-        calcularMMR() {
-        return (10 * this.getpartidasGanadas) + Number(this.ratio);
-        }
+  ratioEliminaciones() { // se agrega el metodo para el ratio
+    return this.#ratio;
+  }
+
+  calcularMMR() {
+    return (10 * this.getPartidasGanadas()) + Number(this.#ratio);
+  }
 }
