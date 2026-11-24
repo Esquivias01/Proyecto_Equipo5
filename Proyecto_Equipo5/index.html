@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Escuadras MMR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <h1>Escuadras MMR</h1>
+    <p>Registra jugadores, arma tu escuadra y compara puntajes.</p>
+  </header>
+
+  <main class="contenedor">
+
+    <!-- registro -->
+    <section class="tarjeta" id="seccion-registro">
+      <h2>Registrar jugador</h2>
+      <form id="form-jugador" class="formulario">
+
+        <label for="gamertag">Gamertag</label>
+        <input type="text" id="gamertag" placeholder="Ej. ShadowFox" required>
+
+        <label for="edad">Edad (mínimo 15)</label>
+        <input type="number" id="edad" min="15" placeholder="15" required>
+
+        <label for="victorias">Partidas ganadas</label>
+        <input type="number" id="victorias" min="0" placeholder="0" required>
+
+        <label for="rol">Rol</label>
+        <select id="rol" required>
+          <option value="">Elige un rol</option>
+          <option value="estrategia">Estrategia</option>
+          <option value="accion">Acción</option>
+        </select>
+
+        <!-- solo se ve uno según el rol -->
+        <div id="campo-objetivos" class="oculto">
+          <label for="objetivos">Objetivos cumplidos</label>
+          <input type="number" id="objetivos" min="0" placeholder="0">
+        </div>
+        <div id="campo-ratio" class="oculto">
+          <label for="ratio">Ratio de eliminaciones</label>
+          <input type="number" id="ratio" min="0" step="0.1" placeholder="0.0">
+        </div>
+
+        <p id="mensaje-registro" class="mensaje" role="alert"></p>
+        <button type="submit" id="btn-registrar" class="boton">Registrar jugador</button>
+      </form>
+    </section>
+
+    <!-- escuadra -->
+    <section class="tarjeta" id="seccion-escuadra">
+      <h2>Mi escuadra</h2>
+      <p class="contador"><span id="cupo-escuadra">0</span> de 5 jugadores</p>
+      <ul id="lista-escuadra" class="lista">
+        <li class="vacio">Aún no hay jugadores en la escuadra.</li>
+      </ul>
+      <p id="mensaje-escuadra" class="mensaje" role="alert"></p>
+      <div class="promedio">
+        <span>MMR promedio</span>
+        <strong id="mmr-promedio">0</strong>
+      </div>
+    </section>
+
+    <!-- jugadores registrados -->
+    <section class="tarjeta tarjeta-ancha" id="seccion-puntajes">
+      <h2>Jugadores registrados</h2>
+      <div id="lista-jugadores" class="grid-jugadores">
+        <p class="vacio">Registra tu primer jugador para verlo aquí.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="./js/index.js"></script>
+</body>
+</html>
