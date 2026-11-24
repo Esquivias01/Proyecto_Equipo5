@@ -7,7 +7,7 @@ const $ = (id) => document.getElementById(id);
 const jugadores = [];
 let escuadra = new Escuadra("Mi escuadra");
 
-// redondea a 1 decimal
+
 function redondear(n) {
   return Math.round(n * 10) / 10;
 }
@@ -16,7 +16,7 @@ function mensaje(id, texto) {
   $(id).textContent = texto;
 }
 
-// crea un elemento con texto y clase
+
 function crear(etiqueta, texto, clase) {
   const el = document.createElement(etiqueta);
   el.textContent = texto;
@@ -24,7 +24,7 @@ function crear(etiqueta, texto, clase) {
   return el;
 }
 
-// muestra objetivos o ratio según el rol
+
 function mostrarCampoPorRol() {
   const rol = $("rol").value;
   $("campo-objetivos").classList.toggle("oculto", rol !== "estrategia");
@@ -33,7 +33,7 @@ function mostrarCampoPorRol() {
 
 $("rol").addEventListener("change", mostrarCampoPorRol);
 
-// registrar jugador
+
 $("form-jugador").addEventListener("submit", (e) => {
   e.preventDefault();
   mensaje("mensaje-registro", "");
@@ -44,7 +44,7 @@ $("form-jugador").addEventListener("submit", (e) => {
     const victorias = Number($("victorias").value);
     const rol = $("rol").value;
 
-    // no repetir gamertags
+    
     const repetido = jugadores.some(
       (j) => j.getGamertag().toLowerCase() === gamertag.toLowerCase()
     );
@@ -58,7 +58,7 @@ $("form-jugador").addEventListener("submit", (e) => {
         throw new Error("Los objetivos deben ser un número entero de 0 o más");
       }
       jugador = new JugadorEstrategia(gamertag, edad, victorias);
-      // la clase solo suma de uno en uno
+     
       for (let i = 0; i < objetivos; i++) {
         jugador.setMisionesCumplidas();
       }
@@ -73,12 +73,12 @@ $("form-jugador").addEventListener("submit", (e) => {
     mostrarCampoPorRol();
     dibujarJugadores();
   } catch (err) {
-    // también salen aquí los errores de las clases
+    
     mensaje("mensaje-registro", err.message);
   }
 });
 
-// tarjetas de jugadores
+
 function dibujarJugadores() {
   const contenedor = $("lista-jugadores");
   contenedor.replaceChildren();
@@ -135,7 +135,7 @@ function agregarAEscuadra(jugador) {
     return;
   }
 
-  // agregarJugador devuelve true o false
+ 
   if (!escuadra.agregarJugador(jugador)) {
     mensaje("mensaje-escuadra", "No se pudo agregar al jugador");
     return;
@@ -148,7 +148,7 @@ function agregarAEscuadra(jugador) {
 function quitarDeEscuadra(jugador) {
   mensaje("mensaje-escuadra", "");
 
-  // Escuadra no tiene quitar, así que se arma otra con los que quedan
+
   const restantes = escuadra.getJugadores().filter((j) => j !== jugador);
   escuadra = new Escuadra("Mi escuadra");
   restantes.forEach((j) => escuadra.agregarJugador(j));
@@ -181,7 +181,6 @@ function dibujarEscuadra() {
   });
 }
 
-// al cargar la página
 mostrarCampoPorRol();
 dibujarJugadores();
 dibujarEscuadra();
