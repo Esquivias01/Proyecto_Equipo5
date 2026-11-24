@@ -18,7 +18,7 @@
 
   <main class="contenedor">
 
-    <!-- 1. Registro de jugadores -->
+    <!-- registro -->
     <section class="tarjeta" id="seccion-registro">
       <h2>Registrar jugador</h2>
       <form id="form-jugador" class="formulario">
@@ -39,7 +39,7 @@
           <option value="accion">Acción</option>
         </select>
 
-        <!-- Solo se muestra uno, según el rol (lo controla index.js con la clase "oculto") -->
+        <!-- solo se ve uno según el rol -->
         <div id="campo-objetivos" class="oculto">
           <label for="objetivos">Objetivos cumplidos</label>
           <input type="number" id="objetivos" min="0" placeholder="0">
@@ -54,7 +54,7 @@
       </form>
     </section>
 
-    <!-- 2. Escuadra -->
+    <!-- escuadra -->
     <section class="tarjeta" id="seccion-escuadra">
       <h2>Mi escuadra</h2>
       <p class="contador"><span id="cupo-escuadra">0</span> de 5 jugadores</p>
@@ -68,7 +68,7 @@
       </div>
     </section>
 
-    <!-- 3. Puntajes -->
+    <!-- jugadores registrados -->
     <section class="tarjeta tarjeta-ancha" id="seccion-puntajes">
       <h2>Jugadores registrados</h2>
       <div id="lista-jugadores" class="grid-jugadores">
@@ -78,17 +78,6 @@
 
   </main>
 
-  <!-- Plantilla de ejemplo de una tarjeta de jugador (index.js puede copiar esta estructura) -->
-  <!--
-  <article class="jugador">
-    <span class="insignia estrategia">Estrategia</span>
-    <h3>ShadowFox</h3>
-    <p>Edad: 18 · Victorias: 12</p>
-    <p class="mmr">MMR <strong>145</strong></p>
-    <button class="boton boton-sec" data-gamertag="ShadowFox">Agregar a escuadra</button>
-  </article>
-  -->
-
-  <script src="index.js" type="module"></script>
+  <script type="module" src="index.js"></script>
 </body>
 </html>

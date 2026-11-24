@@ -1,4 +1,4 @@
-/* ===== Paleta y variables (cambia aquí y se actualiza todo) ===== */
+/* colores */
 :root {
   --fondo: #0e1020;
   --superficie: #181b30;
@@ -6,8 +6,8 @@
   --borde: #2e3366;
   --texto: #e8eaff;
   --texto-suave: #9aa0cf;
-  --acento: #22d3ee;        /* cian */
-  --acento-2: #8b5cf6;      /* violeta */
+  --acento: #22d3ee;
+  --acento-2: #8b5cf6;
   --estrategia: #38bdf8;
   --accion: #fb7185;
   --error: #ff6b81;
@@ -15,7 +15,11 @@
   --brillo: 0 0 24px rgba(34, 211, 238, 0.25);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: "Inter", system-ui, sans-serif;
@@ -27,11 +31,12 @@ body {
   min-height: 100vh;
 }
 
-/* ===== Encabezado ===== */
+/* titulo */
 .encabezado {
   text-align: center;
   padding: 3rem 1.25rem 1.5rem;
 }
+
 .encabezado h1 {
   font-family: "Orbitron", sans-serif;
   font-weight: 800;
@@ -42,12 +47,13 @@ body {
   background-clip: text;
   color: transparent;
 }
+
 .encabezado p {
   color: var(--texto-suave);
   margin-top: 0.5rem;
 }
 
-/* ===== Layout: 1 columna en celular, 2 en pantalla grande ===== */
+/* acomodo de las tarjetas */
 .contenedor {
   display: grid;
   gap: 1.25rem;
@@ -55,18 +61,23 @@ body {
   margin: 0 auto;
   padding: 1rem 1.25rem 3rem;
 }
+
 @media (min-width: 800px) {
-  .contenedor { grid-template-columns: 1fr 1fr; }
-  .tarjeta-ancha { grid-column: 1 / -1; }
+  .contenedor {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tarjeta-ancha {
+    grid-column: 1 / -1;
+  }
 }
 
-/* ===== Tarjetas ===== */
 .tarjeta {
   background: var(--superficie);
   border: 1px solid var(--borde);
   border-radius: var(--radio);
   padding: 1.5rem;
 }
+
 .tarjeta h2 {
   font-family: "Orbitron", sans-serif;
   font-weight: 600;
@@ -74,14 +85,21 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ===== Formulario ===== */
-.formulario { display: flex; flex-direction: column; gap: 0.4rem; }
+/* formulario */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
 .formulario label {
   font-size: 0.9rem;
   color: var(--texto-suave);
   margin-top: 0.6rem;
 }
-input, select {
+
+input,
+select {
   width: 100%;
   padding: 0.7rem 0.9rem;
   background: var(--superficie-2);
@@ -91,14 +109,19 @@ input, select {
   font: inherit;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-input:focus, select:focus {
+
+input:focus,
+select:focus {
   outline: none;
   border-color: var(--acento);
   box-shadow: var(--brillo);
 }
-.oculto { display: none; }
 
-/* ===== Botones ===== */
+.oculto {
+  display: none;
+}
+
+/* botones */
 .boton {
   margin-top: 1rem;
   padding: 0.8rem 1.2rem;
@@ -111,8 +134,24 @@ input:focus, select:focus {
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.2s;
 }
-.boton:hover { box-shadow: var(--brillo); transform: translateY(-1px); }
-.boton:focus-visible { outline: 2px solid var(--texto); outline-offset: 2px; }
+
+.boton:hover {
+  box-shadow: var(--brillo);
+  transform: translateY(-1px);
+}
+
+.boton:focus-visible {
+  outline: 2px solid var(--texto);
+  outline-offset: 2px;
+}
+
+.boton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .boton-sec {
   background: transparent;
   border: 1px solid var(--acento);
@@ -121,19 +160,72 @@ input:focus, select:focus {
   width: 100%;
 }
 
-/* ===== Mensajes ===== */
-.mensaje { min-height: 1.3rem; font-size: 0.9rem; color: var(--error); margin-top: 0.5rem; }
-.vacio { color: var(--texto-suave); font-size: 0.95rem; }
+/* mensajes de error */
+.mensaje {
+  min-height: 1.3rem;
+  font-size: 0.9rem;
+  color: var(--error);
+  margin-top: 0.5rem;
+}
 
-/* ===== Escuadra ===== */
-.contador { color: var(--texto-suave); margin-bottom: 0.75rem; }
-.contador span { color: var(--acento); font-weight: 600; }
-.lista { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.vacio {
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+/* escuadra */
+.contador {
+  color: var(--texto-suave);
+  margin-bottom: 0.75rem;
+}
+
+.contador span {
+  color: var(--acento);
+  font-weight: 600;
+}
+
+.lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .lista li {
   padding: 0.6rem 0.9rem;
   background: var(--superficie-2);
   border-radius: 10px;
 }
+
+.lista li:not(.vacio) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-quitar {
+  background: transparent;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  color: var(--texto-suave);
+  padding: 0.25rem 0.7rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-quitar:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.btn-quitar:focus-visible {
+  outline: 2px solid var(--texto);
+  outline-offset: 2px;
+}
+
 .promedio {
   display: flex;
   justify-content: space-between;
@@ -142,27 +234,42 @@ input:focus, select:focus {
   padding-top: 1rem;
   border-top: 1px solid var(--borde);
 }
+
 .promedio strong {
   font-family: "Orbitron", sans-serif;
   font-size: 2rem;
   color: var(--acento);
 }
 
-/* ===== Tarjetas de jugador ===== */
+/* tarjetas de jugadores */
 .grid-jugadores {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
+
 .jugador {
   background: var(--superficie-2);
   border: 1px solid var(--borde);
   border-radius: var(--radio);
   padding: 1.1rem;
 }
-.jugador h3 { font-family: "Orbitron", sans-serif; font-size: 1.05rem; margin: 0.5rem 0 0.25rem; }
-.jugador p { color: var(--texto-suave); font-size: 0.9rem; }
-.jugador .mmr strong { color: var(--texto); font-size: 1.3rem; }
+
+.jugador h3 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.05rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.jugador p {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.jugador .mmr strong {
+  color: var(--texto);
+  font-size: 1.3rem;
+}
 
 .insignia {
   display: inline-block;
@@ -171,9 +278,19 @@ input:focus, select:focus {
   font-size: 0.8rem;
   font-weight: 600;
 }
-.insignia.estrategia { background: rgba(56, 189, 248, 0.15); color: var(--estrategia); }
-.insignia.accion { background: rgba(251, 113, 133, 0.15); color: var(--accion); }
+
+.insignia.estrategia {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--estrategia);
+}
+
+.insignia.accion {
+  background: rgba(251, 113, 133, 0.15);
+  color: var(--accion);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  * {
+    transition: none !important;
+  }
 }
